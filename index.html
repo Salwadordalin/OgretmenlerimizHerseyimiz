@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bahçesaray ÇPAL Vefa Sayfası</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ana-renk: #1a2a6c; /* Güven veren lacivert tonu */
+            --ana-renk: #1a2a6c;
             --altin: #b4941f;
             --beyaz: #ffffff;
             --gri: #f4f7f6;
@@ -21,41 +21,36 @@
         }
 
         header {
-            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(26, 42, 108, 0.8)), url('bahcesaray-okul.jpg');
+            background: linear-gradient(rgba(26, 42, 108, 0.85), rgba(26, 42, 108, 0.85)), url('okul_arka_plan.jpg');
             background-size: cover;
             background-position: center;
             color: white;
             padding: 100px 20px;
             text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
 
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            margin: 0;
         }
 
         .main-message {
-            max-width: 900px;
-            margin: -60px auto 50px;
+            max-width: 850px;
+            margin: -50px auto 50px;
             background: var(--beyaz);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
+            border-bottom: 5px solid var(--altin);
         }
 
-        .main-message h2 {
-            color: var(--ana-renk);
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Fotoğraf Galerisi */
         .gallery-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
         .gallery-grid {
@@ -69,49 +64,55 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
-            border-bottom: 4px solid transparent;
+            transition: transform 0.3s ease;
         }
 
         .photo-card:hover {
             transform: translateY(-10px);
-            border-bottom: 4px solid var(--altin);
         }
 
         .photo-card img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
+            background-color: #ddd; /* Fotoğraf yoksa gri görünür */
         }
 
-        .photo-desc {
+        .info {
             padding: 20px;
             text-align: center;
-            font-style: italic;
+        }
+
+        .info h3 {
+            margin: 0;
+            color: var(--ana-renk);
+            font-size: 1.4rem;
+        }
+
+        .branch {
+            display: inline-block;
+            background: var(--altin);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .joke-text {
+            font-size: 0.95rem;
             color: #636e72;
-        }
-
-        .student-quotes {
-            background-color: var(--ana-renk);
-            color: var(--beyaz);
-            padding: 60px 20px;
-            margin-top: 50px;
-        }
-
-        .quote-box {
-            max-width: 800px;
-            margin: 0 auto;
-            border-left: 3px solid var(--altin);
-            padding-left: 30px;
-            font-size: 1.2rem;
-            line-height: 1.8;
+            line-height: 1.5;
+            font-style: italic;
         }
 
         footer {
-            padding: 40px;
+            margin-top: 60px;
+            background: #2d3436;
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 0.9rem;
-            color: #b2bec3;
         }
     </style>
 </head>
@@ -119,40 +120,77 @@
 
 <header>
     <h1>Bahçesaray Çok Programlı Anadolu Lisesi</h1>
-    <p>Geleceği Birlikte İnşa Ediyoruz</p>
+    <p>Sizlerle Daha Güçlüyüz</p>
 </header>
 
 <div class="main-message">
     <h2>Kıymetli Öğretmenlerimize...</h2>
-    <p>Son günlerde yaşanan olayların hüznünü ve endişesini yüreğimizde taşıyoruz. Ancak biliyoruz ki okul, sadece dört duvar değil; sizin sevginizle yeşeren bir yuvadır. Bahçesaray ÇPAL öğrencileri olarak, her zaman yanınızdayız ve size minnettarız. Sizin güven veren varlığınız bizim en büyük cesaretimizdir.</p>
+    <p>Son zamanlarda yaşanan acı olaylar hepimizi sarstı ancak sizin sevginiz ve güven veren varlığınız bizim en büyük sığınağımız. Bahçesaray'ın sert kışında içimizi ısıtan emeğiniz için teşekkür ederiz. İyi ki varsınız!</p>
 </div>
 
 <div class="gallery-container">
     <div class="gallery-grid">
-        <div class="photo-card">
-            <img src="ogretmen-anisi1.jpg" alt="Hatıra">
-            <div class="photo-desc">"Sınıflarımız sizinle aydınlanıyor."</div>
-        </div>
-        <div class="photo-card">
-            <img src="ogretmen-anisi2.jpg" alt="Hatıra">
-            <div class="photo-desc">"Bize kattığınız her değer için teşekkürler."</div>
-        </div>
-        <div class="photo-card">
-            <img src="ogretmen-anisi3.jpg" alt="Hatıra">
-            <div class="photo-desc">"Hep birlikte, daha güzel günlere."</div>
-        </div>
-    </div>
-</div>
 
-<div class="student-quotes">
-    <div class="quote-box">
-        <p>"Öğretmenim, siz bizim sadece eğitimcimiz değil, bu uzak coğrafyada yolumuzu aydınlatan fenerimizsiniz. Sizinle kendimizi daha güvende hissediyoruz."</p>
-        <span style="color: var(--altin); font-weight: bold;">- Bahçesaray ÇPAL Öğrencileri</span>
+        <div class="photo-card">
+            <img src="hoca1.jpg" alt="Matematik">
+            <div class="info">
+                <span class="branch">Matematik</span>
+                <h3>Hocam [İsim]</h3>
+                <p class="joke-text">"Hocam, hayatın problemlerini sizin fonksiyonlar kadar kolay çözebilsek keşke. Sizin değeriniz bizim için sabit terim gibidir, hiç değişmez!"</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="hoca2.jpg" alt="Edebiyat">
+            <div class="info">
+                <span class="branch">Edebiyat</span>
+                <h3>Hocam [İsim]</h3>
+                <p class="joke-text">"Divan edebiyatı kadar ağırbaşlı, serbest şiir kadar samimisiniz. Bizim hikayemizin en güzel cümlesi sizsiniz hocam."</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="hoca3.jpg" alt="Tarih">
+            <div class="info">
+                <span class="branch">Tarih</span>
+                <h3>Hocam [İsim]</h3>
+                <p class="joke-text">"Geçmişin kahramanlarını anlatıyorsunuz ama bizim asıl kahramanımız sizsiniz. Sizi tarih sayfaları değil, kalbimiz yazar!"</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="hoca4.jpg" alt="İngilizce">
+            <div class="info">
+                <span class="branch">İngilizce</span>
+                <h3>Hocam [İsim]</h3>
+                <p class="joke-text">"You are more than a teacher to us! Perfect Tense kadar kusursuz bir kalbiniz var, iyi ki Bahçesaray'dasınız."</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="hoca5.jpg" alt="Beden Eğitimi">
+            <div class="info">
+                <span class="branch">Beden Eğitimi</span>
+                <h3>Hocam [İsim]</h3>
+                <p class="joke-text">"Hocam kondisyonumuz sınavlar yüzünden sıfır olsa da, size olan sevgimizle maraton koşarız. Sahaların şahısınız!"</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="hoca6.jpg" alt="Rehberlik">
+            <div class="info">
+                <span class="branch">Rehberlik</span>
+                <h3>Hocam [İsim]</h3>
+                <p class="joke-text">"Kafamızdaki karışık denklemleri düzelten, moral kaynağımız. Bahçesaray'ın yollarından daha karışık dertlerimizi tek cümlede çözenimiz!"</p>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <footer>
-    <p>© 2026 | Bahçesaray Çok Programlı Anadolu Lisesi Vefa Projesi</p>
+    <p>Bahçesaray ÇPAL Öğrencileri Tarafından Saygı ve Sevgiyle Hazırlanmıştır.</p>
+    <p style="font-size: 0.8rem; opacity: 0.6;">© 2026</p>
 </footer>
 
 </body>
