@@ -11,6 +11,7 @@
             --altin: #b4941f;
             --beyaz: #ffffff;
             --gri: #f4f7f6;
+            --mudur-renk: #3498db;
         }
 
         body {
@@ -21,42 +22,34 @@
         }
 
         header {
-            background: linear-gradient(rgba(26, 42, 108, 0.85), rgba(26, 42, 108, 0.85)), url('okul_arka_plan.jpg');
+            background: linear-gradient(rgba(26, 42, 108, 0.85), rgba(26, 42, 108, 0.85)), url('okul.jpg');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 20px;
+            padding: 80px 20px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
 
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin: 0;
-        }
+        header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0; }
 
-        .main-message {
-            max-width: 850px;
-            margin: -50px auto 50px;
-            background: var(--beyaz);
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
             text-align: center;
-            border-bottom: 5px solid var(--altin);
-        }
-
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 50px 0 30px;
+            font-family: 'Playfair Display', serif;
+            color: var(--ana-renk);
+            border-bottom: 2px solid var(--altin);
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .photo-card {
@@ -64,133 +57,104 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            transition: 0.3s ease;
+            text-align: center;
         }
 
-        .photo-card:hover {
-            transform: translateY(-10px);
-        }
+        .photo-card:hover { transform: translateY(-8px); }
 
         .photo-card img {
             width: 100%;
-            height: 280px;
+            height: 250px;
             object-fit: cover;
-            background-color: #ddd; /* Fotoğraf yoksa gri görünür */
+            background-color: #eee;
         }
 
-        .info {
-            padding: 20px;
-            text-align: center;
+        .info { padding: 20px; }
+        .info h3 { margin: 0; font-size: 1.2rem; color: #333; }
+        .branch { 
+            display: inline-block; 
+            background: var(--ana-renk); 
+            color: white; 
+            padding: 2px 10px; 
+            border-radius: 10px; 
+            font-size: 0.75rem; 
+            margin: 5px 0 10px;
         }
+        .joke-text { font-size: 0.85rem; color: #636e72; font-style: italic; line-height: 1.4; }
 
-        .info h3 {
-            margin: 0;
-            color: var(--ana-renk);
-            font-size: 1.4rem;
-        }
-
-        .branch {
-            display: inline-block;
-            background: var(--altin);
-            color: white;
-            padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .joke-text {
-            font-size: 0.95rem;
-            color: #636e72;
-            line-height: 1.5;
-            font-style: italic;
-        }
-
-        footer {
-            margin-top: 60px;
-            background: #2d3436;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
+        footer { background: #2d3436; color: white; padding: 30px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Bahçesaray Çok Programlı Anadolu Lisesi</h1>
-    <p>Sizlerle Daha Güçlüyüz</p>
+    <p>Bir Aile, Bin Umut</p>
 </header>
 
-<div class="main-message">
-    <h2>Kıymetli Öğretmenlerimize...</h2>
-    <p>Son zamanlarda yaşanan acı olaylar hepimizi sarstı ancak sizin sevginiz ve güven veren varlığınız bizim en büyük sığınağımız. Bahçesaray'ın sert kışında içimizi ısıtan emeğiniz için teşekkür ederiz. İyi ki varsınız!</p>
-</div>
-
-<div class="gallery-container">
+<div class="container">
+    
+    <h2 class="section-title">Okul Yönetimimiz</h2>
     <div class="gallery-grid">
-
         <div class="photo-card">
-            <img src="hoca1.jpg" alt="Matematik">
+            <img src="fatih_hoca.jpg" alt="Fatih Alemdar">
             <div class="info">
-                <span class="branch">Matematik</span>
-                <h3>Hocam [İsim]</h3>
-                <p class="joke-text">"Hocam, hayatın problemlerini sizin fonksiyonlar kadar kolay çözebilsek keşke. Sizin değeriniz bizim için sabit terim gibidir, hiç değişmez!"</p>
+                <span class="branch">Okul Müdürü / Matematik</span>
+                <h3>Fatih Alemdar</h3>
+                <p class="joke-text">"Okulun en büyük denklemini sevgiyle çözen, bizlere her zaman doğru açıyla bakan müdürümüz."</p>
             </div>
         </div>
-
         <div class="photo-card">
-            <img src="hoca2.jpg" alt="Edebiyat">
+            <img src="seyma_hoca.jpg" alt="Şeyma Keleş">
             <div class="info">
-                <span class="branch">Edebiyat</span>
-                <h3>Hocam [İsim]</h3>
-                <p class="joke-text">"Divan edebiyatı kadar ağırbaşlı, serbest şiir kadar samimisiniz. Bizim hikayemizin en güzel cümlesi sizsiniz hocam."</p>
+                <span class="branch">Müdür Yardımcısı / Beden Eğitimi</span>
+                <h3>Şeyma Keleş</h3>
+                <p class="joke-text">"Disiplini ve enerjisiyle okulumuzun temposunu hiç düşürmeyen, her zaman zinde liderimiz."</p>
             </div>
         </div>
-
         <div class="photo-card">
-            <img src="hoca3.jpg" alt="Tarih">
+            <img src="furkan_hoca.jpg" alt="Furkan Emrullah Aşık">
             <div class="info">
-                <span class="branch">Tarih</span>
-                <h3>Hocam [İsim]</h3>
-                <p class="joke-text">"Geçmişin kahramanlarını anlatıyorsunuz ama bizim asıl kahramanımız sizsiniz. Sizi tarih sayfaları değil, kalbimiz yazar!"</p>
+                <span class="branch">Müdür Yardımcısı / Fizik</span>
+                <h3>Furkan Emrullah Aşık</h3>
+                <p class="joke-text">"Okuldaki tüm zorluklara karşı direnci düşüren, enerjisiyle bizleri harekete geçiren hocamız."</p>
             </div>
         </div>
+    </div>
 
-        <div class="photo-card">
-            <img src="hoca4.jpg" alt="İngilizce">
-            <div class="info">
-                <span class="branch">İngilizce</span>
-                <h3>Hocam [İsim]</h3>
-                <p class="joke-text">"You are more than a teacher to us! Perfect Tense kadar kusursuz bir kalbiniz var, iyi ki Bahçesaray'dasınız."</p>
-            </div>
-        </div>
+    <h2 class="section-title">Eğitim Kadromuz</h2>
+    <div class="gallery-grid">
+        <div class="photo-card"><img src="esra_hoca.jpg"><div class="info"><span class="branch">Rehberlik</span><h3>Esra Çörekoğlu</h3><p class="joke-text">"Kafamızdaki soru işaretlerini huzura çeviren limanımız."</p></div></div>
+        <div class="photo-card"><img src="irfan_hoca.jpg"><div class="info"><span class="branch">Matematik</span><h3>İrfan Özdemir</h3><p class="joke-text">"Sayıların dilini bize sevdiren, problemlerin korkulu rüyası."</p></div></div>
+        <div class="photo-card"><img src="adnan_hoca.jpg"><div class="info"><span class="branch">Edebiyat</span><h3>Mehmet Adnan İnsel</h3><p class="joke-text">"Cümlelerin efendisi, her dersi bir roman tadında anlatan hocamız."</p></div></div>
+        <div class="photo-card"><img src="mazlum_hoca.jpg"><div class="info"><span class="branch">Edebiyat</span><h3>Mazlum Turan</h3><p class="joke-text">"Şiir gibi bir yürek, edebiyatın en samimi sesi."</p></div></div>
+        <div class="photo-card"><img src="bayram_hoca.jpg"><div class="info"><span class="branch">Coğrafya</span><h3>Bayram Aşit</h3><p class="joke-text">"Dünyayı ve Bahçesaray'ı bize karış karış tanıtan rehberimiz."</p></div></div>
+        <div class="photo-card"><img src="saliha_hoca.jpg"><div class="info"><span class="branch">Din Kültürü</span><h3>Saliha Çelem</h3><p class="joke-text">"Güler yüzü ve manevi desteğiyle içimizi ısıtan hocamız."</p></div></div>
+        <div class="photo-card"><img src="osman_hoca.jpg"><div class="info"><span class="branch">Din Kültürü</span><h3>Osman Kaya</h3><p class="joke-text">"Sabrı ve bilgisiyle bize her zaman örnek olan büyüğümüz."</p></div></div>
+        <div class="photo-card"><img src="meryem_hoca.jpg"><div class="info"><span class="branch">İngilizce</span><h3>Meryem Güntin</h3><p class="joke-text">"Our sun in the snowy Bahçesaray! Everything is better with you."</p></div></div>
+        <div class="photo-card"><img src="ali_hoca.jpg"><div class="info"><span class="branch">İngilizce</span><h3>Ali Çiftçi</h3><p class="joke-text">"Dil bariyerlerini sevgiyle aşmamızı sağlayan cool hocamız."</p></div></div>
+        <div class="photo-card"><img src="begum_hoca.jpg"><div class="info"><span class="branch">Müzik</span><h3>Begüm Yağmuroğlu</h3><p class="joke-text">"Okulun ruhuna en güzel notaları dokuyan sanatçımız."</p></div></div>
+        <div class="photo-card"><img src="koray_hoca.jpg"><div class="info"><span class="branch">Tarih</span><h3>Koray Eker</h3><p class="joke-text">"Geçmişin kahramanlarını günümüze taşıyan tarih elçimiz."</p></div></div>
+    </div>
 
-        <div class="photo-card">
-            <img src="hoca5.jpg" alt="Beden Eğitimi">
-            <div class="info">
-                <span class="branch">Beden Eğitimi</span>
-                <h3>Hocam [İsim]</h3>
-                <p class="joke-text">"Hocam kondisyonumuz sınavlar yüzünden sıfır olsa da, size olan sevgimizle maraton koşarız. Sahaların şahısınız!"</p>
-            </div>
-        </div>
-
-        <div class="photo-card">
-            <img src="hoca6.jpg" alt="Rehberlik">
-            <div class="info">
-                <span class="branch">Rehberlik</span>
-                <h3>Hocam [İsim]</h3>
-                <p class="joke-text">"Kafamızdaki karışık denklemleri düzelten, moral kaynağımız. Bahçesaray'ın yollarından daha karışık dertlerimizi tek cümlede çözenimiz!"</p>
-            </div>
-        </div>
-
+    <h2 class="section-title">Okulumuzun Görünmez Kahramanları</h2>
+    <div class="gallery-grid">
+        <div class="photo-card"><img src="suleyman_m.jpg"><div class="info"><span class="branch" style="background:#e67e22">Memur</span><h3>Süleyman Şamiloğlu</h3><p class="joke-text">"Okulun resmiyetini samimiyete döken emektarımız."</p></div></div>
+        <div class="photo-card"><img src="resit.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>Reşit Sami</h3><p class="joke-text">"Emeğiyle her köşeyi pırıl pırıl yapan abimiz."</p></div></div>
+        <div class="photo-card"><img src="lokman.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>Lokman Dağtekin</h3><p class="joke-text">"Her sabah güler yüzle karşılayan gizli gücümüz."</p></div></div>
+        <div class="photo-card"><img src="aziz.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>Aziz Çağlar</h3><p class="joke-text">"Yardımseverliğiyle her zaman hızımıza yetişen büyüğümüz."</p></div></div>
+        <div class="photo-card"><img src="inan.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>İnan Dağtekin</h3><p class="joke-text">"Okulumuzun düzeni ve huzuru için gece gündüz çalışanımız."</p></div></div>
+        <div class="photo-card"><img src="suleyman_h.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>Süleyman Hırlı</h3><p class="joke-text">"Eksiklerin en hızlı tamamlayıcısı, sağ kolumuz."</p></div></div>
+        <div class="photo-card"><img src="rifat.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>Rifat Sami</h3><p class="joke-text">"Sessiz sedasız her işe yetişen vefakar çalışanımız."</p></div></div>
+        <div class="photo-card"><img src="bayram_s.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>Bayram Şahin</h3><p class="joke-text">"Okulumuzun yükünü omuzlayan kıymetli çalışanımız."</p></div></div>
+        <div class="photo-card"><img src="nazmi.jpg"><div class="info"><span class="branch" style="background:#7f8c8d">Hizmetli</span><h3>Nazmi Dağtekin</h3><p class="joke-text">"Bahçesaray'ın soğuğunda okulumuzu sıcacık tutan emeğiniz için teşekkürler."</p></div></div>
     </div>
 </div>
 
 <footer>
-    <p>Bahçesaray ÇPAL Öğrencileri Tarafından Saygı ve Sevgiyle Hazırlanmıştır.</p>
-    <p style="font-size: 0.8rem; opacity: 0.6;">© 2026</p>
+    <p>Bahçesaray ÇPAL Öğrencileri Tarafından Saygıyla Hazırlanmıştır.</p>
+    <p>Sizlerle Daha Güvendeyiz!</p>
 </footer>
 
 </body>
