@@ -3,113 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi Ki Varsınız Öğretmenim</title>
+    <title>Öğretmenlerimize Vefa - LiseCephe</title>
     <style>
+        :root {
+            --ana-renk: #000000; /* Burayı okul renklerine göre değiştirebiliriz */
+            --vurgu-renk: #ffffff;
+            --gri: #f8f9fa;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gri);
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
             color: #333;
-            text-align: center;
         }
 
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('okul-binasi.jpg'); /* Okulun bir fotosu arka plan olabilir */
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 40px 20px;
+            padding: 80px 20px;
+            text-align: center;
         }
 
-        h1 { margin: 0; font-size: 2.5rem; }
-        p.subtitle { font-style: italic; opacity: 0.9; margin-top: 10px; }
-
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .message-box {
+        .personal-note {
+            max-width: 800px;
+            margin: -40px auto 40px;
             background: white;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            line-height: 1.6;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--ana-renk);
         }
 
-        /* Fotoğraf Galerisi */
+        /* Fotoğraf Galerisi ve İsimler */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            background: white;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .gallery-item p {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        footer {
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             padding: 20px;
-            background: #eee;
-            font-size: 0.8rem;
+        }
+
+        .teacher-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .teacher-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .teacher-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .teacher-info h3 { margin: 5px 0; color: var(--ana-renk); }
+        .teacher-info p { font-size: 0.9rem; color: #666; font-style: italic; }
+
+        .quotes-section {
+            background: var(--ana-renk);
+            color: white;
+            padding: 50px 20px;
+            margin-top: 50px;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .quote-item {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Canım Öğretmenlerimize...</h1>
-    <p class="subtitle">"Karanlığa karşı en büyük ışık sizsiniz."</p>
+    <h1>Van Atatürk Anadolu Lisesi Ailesi</h1>
+    <p>Omuz Omuza, Daima İleriye</p>
 </header>
 
-<div class="container">
-    <div class="message-box">
-        <h2>Sizinle Güvendeyiz, Sizinle Güçlüyüz</h2>
-        <p>Son zamanlarda yaşanan acı olaylar hepimizi derinden yaraladı. Ancak biliyoruz ki bizleri geleceğe hazırlayan, bize sadece dersleri değil, insanlığı ve umudu öğreten sizlersiniz. Korkularımızı birlikte aşacak, okullarımızı yine neşe dolu yuvalara dönüştüreceğiz. Biz öğrencileriniz olarak her zaman yanınızdayız.</p>
+<div class="container" style="max-width: 1100px; margin: auto;">
+    <div class="personal-note">
+        <h3>Öğretmenlerimize Açık Mektup</h3>
+        <p>Sizler sadece tahtada ders anlatan değil, hayatın zorluklarına karşı nasıl dik duracağımızı gösteren rehberlerimizsiniz. Yaşanan tüm zorluklara rağmen, sizin sevginiz ve emeğiniz bizim en büyük sığınağımız. Bu site, size olan minnetimizin küçük bir nişanesidir.</p>
     </div>
 
-    <h3>Anılarımız ve Değerli Öğretmenlerimiz</h3>
     <div class="gallery">
-        <div class="gallery-item">
-            <img src="fotograf1.jpg" alt="Sınıf Anısı">
-            <p>Birlikte güldüğümüz o güzel anlar...</p>
+        <div class="teacher-card">
+            <img src="ogretmen1.jpg" class="teacher-photo" alt="Öğretmen Adı">
+            <div class="teacher-info">
+                <h3>[Öğretmen Adı]</h3>
+                <p>"Bize kattığınız her değer için teşekkürler."</p>
+            </div>
         </div>
-        <div class="gallery-item">
-            <img src="fotograf2.jpg" alt="Öğretmenimizle">
-            <p>Emeğiniz ödenmez.</p>
         </div>
-        <div class="gallery-item">
-            <img src="fotograf3.jpg" alt="Okul Bahçesi">
-            <p>Okulumuzun her köşesinde iziniz var.</p>
-        </div>
+</div>
+
+<div class="quotes-section">
+    <h2 style="text-align: center; margin-bottom: 30px;">Öğrencilerden Mesajlar</h2>
+    <div class="quote-grid">
+        <div class="quote-item">"Sizin güven veren sesinizle okulumuz yine şenlenecek. Sizi çok seviyoruz." <br><strong>- 12/E Sınıfı</strong></div>
+        <div class="quote-item">"Korkularımızı cesarete dönüştüren canım öğretmenim, iyi ki varsınız." <br><strong>- Bir Öğrenciniz</strong></div>
+        <div class="quote-item">"Emeğiniz, sabrınız ve sevginiz bizim en büyük gücümüz." <br><strong>- Okul Takımı</strong></div>
     </div>
 </div>
 
-<footer>
-    <p>Öğrencilerinizden sevgi ve saygıyla tasarlanmıştır. | 2026</p>
+<footer style="text-align: center; padding: 40px; color: #888;">
+    <p>Sizi çok seven öğrencileriniz tarafından saygıyla hazırlanmıştır.</p>
 </footer>
 
 </body>
