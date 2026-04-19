@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bahçesaray ÇPAL Vefa Sayfası - Öğretmenlerimize Saygı</title>
+    <title>Bahçesaray ÇPAL Ailesi - Öğretmenlerimize Saygı</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -33,7 +33,6 @@
             line-height: 1.6;
         }
 
-        /* HEADER - HERO BÖLÜMü */
         header {
             background: linear-gradient(135deg, rgba(26, 42, 108, 0.95), rgba(52, 152, 219, 0.9)), url('okul.jpg');
             background-size: cover;
@@ -128,7 +127,6 @@
             padding: 20px;
         }
 
-        /* SEKSİYON BAŞLIKLARI */
         .section-title {
             text-align: center;
             margin: 70px 0 40px;
@@ -156,7 +154,6 @@
             to { width: 100px; }
         }
 
-        /* GALERİ GRID */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -164,7 +161,6 @@
             margin-bottom: 50px;
         }
 
-        /* PHOTO CARD */
         .photo-card {
             background: var(--beyaz);
             border-radius: 12px;
@@ -215,17 +211,6 @@
             transform: scale(1.05);
         }
 
-        .photo-card.loading img {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
         .info {
             padding: 25px;
         }
@@ -262,7 +247,6 @@
         .joke-text {
             font-size: 0.9rem;
             color: #555;
-            font-style: italic;
             line-height: 1.6;
             margin-top: 12px;
             padding-top: 12px;
@@ -274,7 +258,6 @@
             color: var(--mavi);
         }
 
-        /* MESAJ KUTUSU */
         .message-box {
             background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(52, 152, 219, 0.1));
             border-left: 5px solid var(--kirmizi);
@@ -309,7 +292,6 @@
             font-size: 0.95rem;
         }
 
-        /* STATS SEKSİYONU */
         .stats-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -338,7 +320,6 @@
             margin-top: 10px;
         }
 
-        /* FOOTER */
         footer {
             background: linear-gradient(135deg, #2d3436, #1a2a6c);
             color: white;
@@ -366,7 +347,6 @@
             50% { transform: scale(1.2); }
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             header .subtitle { font-size: 1rem; }
@@ -375,13 +355,6 @@
             .stats-section { grid-template-columns: 1fr; }
         }
 
-        /* SMOOTH SCROLL VE FOCUSA UYGUNLUK */
-        a:focus, button:focus {
-            outline: 3px solid var(--mavi);
-            outline-offset: 2px;
-        }
-
-        /* SCROLLBAR AYARI */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -416,7 +389,6 @@
 
 <div class="container">
 
-    <!-- MESAJ KUTUSU -->
     <div class="message-box">
         <h3>💙 Öğretmenlerimize Saygı ve Minnet</h3>
         <p>
@@ -427,7 +399,6 @@
         </p>
     </div>
 
-    <!-- İSTATİSTİKLER -->
     <div class="stats-section">
         <div class="stat-card">
             <div class="stat-number">1</div>
@@ -447,7 +418,6 @@
         </div>
     </div>
     
-    <!-- YÖNETİM -->
     <h2 class="section-title">👔 Okul Yönetimimiz</h2>
     <div class="gallery-grid">
         <div class="photo-card">
@@ -455,7 +425,7 @@
             <div class="info">
                 <span class="branch">Okul Müdürü / Matematik</span>
                 <h3>Fatih Alemdar</h3>
-                <p class="joke-text">"Okulun en büyük denklemini sevgiyle çözen, bizlere her zaman doğru açıyla bakan müdürümüz. Liderliğiyle okulumuzun yürek çarpışıdır."</p>
+                <p class="joke-text">Başarının gizli formülü: Hocanın severliği ve sabırı. Matematiği sevdiren, çocuklara inanan müdürümüz.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -463,7 +433,7 @@
             <div class="info">
                 <span class="branch">Müdür Yardımcısı / Beden Eğitimi</span>
                 <h3>Şeyma Keleş</h3>
-                <p class="joke-text">"Disiplini ve enerjisiyle okulumuzun temposunu hiç düşürmeyen, her zaman zinde liderimiz. Bizlere cesaret ve güç veren eğitmeni."</p>
+                <p class="joke-text">Enerjisi bulaşıcı, gülüşü samimi. Derslerde sadece spor değil, disiplin ve özgüven öğretiyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -471,12 +441,11 @@
             <div class="info">
                 <span class="branch">Müdür Yardımcısı / Fizik</span>
                 <h3>Furkan Emrullah Aşık</h3>
-                <p class="joke-text">"Okuldaki tüm zorluklara karşı direnci düşüren, enerjisiyle bizleri harekete geçiren hocamız. Bizim ilham perimiz."</p>
+                <p class="joke-text">Zor konuları basit anlatıyor, asla yıldırmıyor. Fizik dersine girdiğimiz zaman mutlu oluyoruz.</p>
             </div>
         </div>
     </div>
 
-    <!-- ÖĞRETMEN KADROSU -->
     <h2 class="section-title">📚 Eğitim Kadromuz</h2>
     <div class="gallery-grid">
         <div class="photo-card">
@@ -484,7 +453,7 @@
             <div class="info">
                 <span class="branch">Rehberlik</span>
                 <h3>Esra Çörekoğlu</h3>
-                <p class="joke-text">"Kafamızdaki soru işaretlerini huzura çeviren limanımız. Her zaman duymaya hazır, her zaman anlayan."</p>
+                <p class="joke-text">Odasında en iyi danışmanlık, en samimi gülüş. Sorunlarımıza her zaman dinleyen bir kulak.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -492,7 +461,7 @@
             <div class="info">
                 <span class="branch">Matematik</span>
                 <h3>İrfan Özdemir</h3>
-                <p class="joke-text">"Sayıların dilini bize sevdiren, problemlerin korkulu rüyası. Ama aynı zamanda bizim en güvendiğimiz danışman."</p>
+                <p class="joke-text">Matematikten korktuğumuz zaman onu hatırlıyoruz. Çünkü o sayıları insana çeviriyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -500,7 +469,7 @@
             <div class="info">
                 <span class="branch">Edebiyat</span>
                 <h3>Mehmet Adnan İnsel</h3>
-                <p class="joke-text">"Cümlelerin efendisi, her dersi bir roman tadında anlatan hocamız. Kelimelerle hayat öretisini bize öğretiyor."</p>
+                <p class="joke-text">Her derste bir köpürme konuşması. Kelime seçimleri, cümle akışları... Edebiyat hocamız gerçek bir sanatçı.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -508,7 +477,7 @@
             <div class="info">
                 <span class="branch">Edebiyat</span>
                 <h3>Mazlum Turan</h3>
-                <p class="joke-text">"Şiir gibi bir yürek, edebiyatın en samimi sesi. Ruhlarımızı besleyen şair hocamız."</p>
+                <p class="joke-text">Şiiri bizim diline çeviriyor. Dersten sonra sıkılmak imkânsız oluyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -516,7 +485,7 @@
             <div class="info">
                 <span class="branch">Coğrafya</span>
                 <h3>Bayram Aşit</h3>
-                <p class="joke-text">"Dünyayı ve Bahçesaray'ı bize karış karış tanıtan rehberimiz. Ufkumuzu genişleten öğretmen."</p>
+                <p class="joke-text">Haritayı açtığında dünya canlı oluyor. Bahçesaray'ın her köşesini bize sevdirtiyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -524,7 +493,7 @@
             <div class="info">
                 <span class="branch">Din Kültürü</span>
                 <h3>Saliha Çelem</h3>
-                <p class="joke-text">"Güler yüzü ve manevi desteğiyle içimizi ısıtan hocamız. İyilik ve sevginin sembolü."</p>
+                <p class="joke-text">Güler yüzü kadar sıcak bir kalbi var. Din kültürünü sevgiyle öğretiyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -532,7 +501,7 @@
             <div class="info">
                 <span class="branch">Din Kültürü</span>
                 <h3>Osman Kaya</h3>
-                <p class="joke-text">"Sabrı ve bilgisiyle bize her zaman örnek olan büyüğümüz. Hikmetini bizimle paylaşan bilge."</p>
+                <p class="joke-text">Sabrısı efsane, bilgisi sonsuz. Soru sorduk mu hep cevap buluyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -540,7 +509,7 @@
             <div class="info">
                 <span class="branch">İngilizce</span>
                 <h3>Meryem Güntin</h3>
-                <p class="joke-text">"Our sun in the snowy Bahçesaray! Everything is better with you. Işığın içinde öğretmeni."</p>
+                <p class="joke-text">İngilizce sadece ders değil, ona katılmak keyif. Işığını sınıfta saçıyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -548,7 +517,7 @@
             <div class="info">
                 <span class="branch">İngilizce</span>
                 <h3>Ali Çiftçi</h3>
-                <p class="joke-text">"Dil bariyerlerini sevgiyle aşmamızı sağlayan cool hocamız. Arkadaş, öğretmen ve rehber."</p>
+                <p class="joke-text">Derste eğleniyoruz, sonra kelime öğrendiğimizi fark ediyoruz. İngilizce bu kadar akıcı bir dil olabilir mi?</p>
             </div>
         </div>
         <div class="photo-card">
@@ -556,7 +525,7 @@
             <div class="info">
                 <span class="branch">Müzik</span>
                 <h3>Begüm Yağmuroğlu</h3>
-                <p class="joke-text">"Okulun ruhuna en güzel notaları dokuyan sanatçımız. Müzikle sevgiyi bize öğreten öğretmen."</p>
+                <p class="joke-text">Müzik dersinden sonra akılımız sıkılmıyor. Notaları hayata döndürüyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -564,12 +533,11 @@
             <div class="info">
                 <span class="branch">Tarih</span>
                 <h3>Koray Eker</h3>
-                <p class="joke-text">"Geçmişin kahramanlarını günümüze taşıyan tarih elçimiz. Bizleri tarihe ve geleceğe bağlayan köprü."</p>
+                <p class="joke-text">Tarihi anlatırken hayalımızda canlanıyor. Geçmiş artık sıkıcı değil, bir macera.</p>
             </div>
         </div>
     </div>
 
-    <!-- PERSONEL -->
     <h2 class="section-title">🤝 Okulumuzun Görünmez Kahramanları</h2>
     <div class="gallery-grid">
         <div class="photo-card">
@@ -577,7 +545,7 @@
             <div class="info">
                 <span class="branch memur">Memur</span>
                 <h3>Süleyman Şamiloğlu</h3>
-                <p class="joke-text">"Okulun resmiyetini samimiyete dönen emektarımız. Her evrakın arkasında bir kalp atışı vardır."</p>
+                <p class="joke-text">Evrakları düzenli, eli sürekli çalışıyor. Okulun resmen kalbi, samimiyetle yüreği.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -585,7 +553,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Reşit Sami</h3>
-                <p class="joke-text">"Emeğiyle her köşeyi pırıl pırıl yapan abimiz. Sessiz sedasız çalışkan ve vefakar."</p>
+                <p class="joke-text">Okulun her köşesi onun elinden geçiyor. Temizlik meslek değil, sevgi işi onun için.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -593,7 +561,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Lokman Dağtekin</h3>
-                <p class="joke-text">"Her sabah güler yüzle karşılayan gizli gücümüz. Başımızda güneş, kalbimizde şükran."</p>
+                <p class="joke-text">Her sabah o gülüşle başlıyor günümüz. Çok çalışkan, çok vefakar bir abi.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -601,7 +569,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Aziz Çağlar</h3>
-                <p class="joke-text">"Yardımseverliğiyle her zaman hızımıza yetişen büyüğümüz. İyiliğin adı yazılı yüzünüzde."</p>
+                <p class="joke-text">Ne ihtiyaç olsa orada. İyilik sadece sözcük değil, onun davranışı.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -609,7 +577,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>İnan Dağtekin</h3>
-                <p class="joke-text">"Okulumuzun düzeni ve huzuru için gece gündüz çalışanımız. Esiniz bizim ebedi minnetimiz."</p>
+                <p class="joke-text">Gece gündüz okulumuzu düşünüyor. Emekle dizilen okulun mimarı.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -617,7 +585,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Süleyman Hırlı</h3>
-                <p class="joke-text">"Eksiklerin en hızlı tamamlayıcısı, sağ kolumuz. Neye ihtiyaç olsa hemen hazır."</p>
+                <p class="joke-text">Sorun da, çözüm de buna soruyoruz. Hızlı, güvenilir ve her zaman hazır.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -625,7 +593,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Rifat Sami</h3>
-                <p class="joke-text">"Sessiz sedasız her işe yetişen vefakar çalışanımız. Alçakgönüllülüğünüz örnek alınır."</p>
+                <p class="joke-text">Ses çıkarmadan çalışıyor ama işi konuşuyor. Alçakgönüllülüğün adı.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -633,7 +601,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Bayram Şahin</h3>
-                <p class="joke-text">"Okulumuzun yükünü omuzlayan kıymetli çalışanımız. Bir damlanın deryaya katkısı gibi değerlisiniz."</p>
+                <p class="joke-text">Okulun y��künü taşıyor, şikâyet etmiyor. Emeğin tanısı bu insandır.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -641,12 +609,11 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Nazmi Dağtekin</h3>
-                <p class="joke-text">"Bahçesaray'ın soğuğunda okulumuzu sıcacık tutan emeğiniz için sonsuz teşekkürler. Kış geçse bile kalplerimizde bahar."</p>
+                <p class="joke-text">Bahçesaray'ın soğuğunda okulumuzu sıcak tutuyor. Kışın en güneşli kişi o.</p>
             </div>
         </div>
     </div>
 
-    <!-- KAPANIŞ MESAJI -->
     <div class="message-box">
         <h3>💝 Son Bir Söz...</h3>
         <p>
@@ -675,4 +642,4 @@
 </footer>
 
 </body>
-    </html>
+</html>
