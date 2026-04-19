@@ -3,132 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Öğretmenlerimize Vefa - LiseCephe</title>
+    <title>Bahçesaray ÇPAL Vefa Sayfası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ana-renk: #000000; /* Burayı okul renklerine göre değiştirebiliriz */
-            --vurgu-renk: #ffffff;
-            --gri: #f8f9fa;
+            --ana-renk: #1a2a6c; /* Güven veren lacivert tonu */
+            --altin: #b4941f;
+            --beyaz: #ffffff;
+            --gri: #f4f7f6;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--gri);
             margin: 0;
-            color: #333;
+            color: #2d3436;
         }
 
         header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('okul-binasi.jpg'); /* Okulun bir fotosu arka plan olabilir */
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(26, 42, 108, 0.8)), url('bahcesaray-okul.jpg');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 80px 20px;
+            padding: 100px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .main-message {
+            max-width: 900px;
+            margin: -60px auto 50px;
+            background: var(--beyaz);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center;
         }
 
-        .personal-note {
-            max-width: 800px;
-            margin: -40px auto 40px;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--ana-renk);
+        .main-message h2 {
+            color: var(--ana-renk);
+            font-family: 'Playfair Display', serif;
         }
 
-        /* Fotoğraf Galerisi ve İsimler */
-        .gallery {
+        /* Fotoğraf Galerisi */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .teacher-card {
-            background: white;
-            border-radius: 12px;
+        .photo-card {
+            background: var(--beyaz);
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
+            transition: all 0.4s ease;
+            border-bottom: 4px solid transparent;
         }
 
-        .teacher-card:hover {
+        .photo-card:hover {
             transform: translateY(-10px);
+            border-bottom: 4px solid var(--altin);
         }
 
-        .teacher-photo {
+        .photo-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
         }
 
-        .teacher-info {
-            padding: 15px;
+        .photo-desc {
+            padding: 20px;
             text-align: center;
+            font-style: italic;
+            color: #636e72;
         }
 
-        .teacher-info h3 { margin: 5px 0; color: var(--ana-renk); }
-        .teacher-info p { font-size: 0.9rem; color: #666; font-style: italic; }
-
-        .quotes-section {
-            background: var(--ana-renk);
-            color: white;
-            padding: 50px 20px;
+        .student-quotes {
+            background-color: var(--ana-renk);
+            color: var(--beyaz);
+            padding: 60px 20px;
             margin-top: 50px;
         }
 
-        .quote-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
+        .quote-box {
+            max-width: 800px;
             margin: 0 auto;
+            border-left: 3px solid var(--altin);
+            padding-left: 30px;
+            font-size: 1.2rem;
+            line-height: 1.8;
         }
 
-        .quote-item {
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 0.85rem;
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #b2bec3;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Van Atatürk Anadolu Lisesi Ailesi</h1>
-    <p>Omuz Omuza, Daima İleriye</p>
+    <h1>Bahçesaray Çok Programlı Anadolu Lisesi</h1>
+    <p>Geleceği Birlikte İnşa Ediyoruz</p>
 </header>
 
-<div class="container" style="max-width: 1100px; margin: auto;">
-    <div class="personal-note">
-        <h3>Öğretmenlerimize Açık Mektup</h3>
-        <p>Sizler sadece tahtada ders anlatan değil, hayatın zorluklarına karşı nasıl dik duracağımızı gösteren rehberlerimizsiniz. Yaşanan tüm zorluklara rağmen, sizin sevginiz ve emeğiniz bizim en büyük sığınağımız. Bu site, size olan minnetimizin küçük bir nişanesidir.</p>
-    </div>
-
-    <div class="gallery">
-        <div class="teacher-card">
-            <img src="ogretmen1.jpg" class="teacher-photo" alt="Öğretmen Adı">
-            <div class="teacher-info">
-                <h3>[Öğretmen Adı]</h3>
-                <p>"Bize kattığınız her değer için teşekkürler."</p>
-            </div>
-        </div>
-        </div>
+<div class="main-message">
+    <h2>Kıymetli Öğretmenlerimize...</h2>
+    <p>Son günlerde yaşanan olayların hüznünü ve endişesini yüreğimizde taşıyoruz. Ancak biliyoruz ki okul, sadece dört duvar değil; sizin sevginizle yeşeren bir yuvadır. Bahçesaray ÇPAL öğrencileri olarak, her zaman yanınızdayız ve size minnettarız. Sizin güven veren varlığınız bizim en büyük cesaretimizdir.</p>
 </div>
 
-<div class="quotes-section">
-    <h2 style="text-align: center; margin-bottom: 30px;">Öğrencilerden Mesajlar</h2>
-    <div class="quote-grid">
-        <div class="quote-item">"Sizin güven veren sesinizle okulumuz yine şenlenecek. Sizi çok seviyoruz." <br><strong>- 12/E Sınıfı</strong></div>
-        <div class="quote-item">"Korkularımızı cesarete dönüştüren canım öğretmenim, iyi ki varsınız." <br><strong>- Bir Öğrenciniz</strong></div>
-        <div class="quote-item">"Emeğiniz, sabrınız ve sevginiz bizim en büyük gücümüz." <br><strong>- Okul Takımı</strong></div>
+<div class="gallery-container">
+    <div class="gallery-grid">
+        <div class="photo-card">
+            <img src="ogretmen-anisi1.jpg" alt="Hatıra">
+            <div class="photo-desc">"Sınıflarımız sizinle aydınlanıyor."</div>
+        </div>
+        <div class="photo-card">
+            <img src="ogretmen-anisi2.jpg" alt="Hatıra">
+            <div class="photo-desc">"Bize kattığınız her değer için teşekkürler."</div>
+        </div>
+        <div class="photo-card">
+            <img src="ogretmen-anisi3.jpg" alt="Hatıra">
+            <div class="photo-desc">"Hep birlikte, daha güzel günlere."</div>
+        </div>
     </div>
 </div>
 
-<footer style="text-align: center; padding: 40px; color: #888;">
-    <p>Sizi çok seven öğrencileriniz tarafından saygıyla hazırlanmıştır.</p>
+<div class="student-quotes">
+    <div class="quote-box">
+        <p>"Öğretmenim, siz bizim sadece eğitimcimiz değil, bu uzak coğrafyada yolumuzu aydınlatan fenerimizsiniz. Sizinle kendimizi daha güvende hissediyoruz."</p>
+        <span style="color: var(--altin); font-weight: bold;">- Bahçesaray ÇPAL Öğrencileri</span>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 | Bahçesaray Çok Programlı Anadolu Lisesi Vefa Projesi</p>
 </footer>
 
 </body>
