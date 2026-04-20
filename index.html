@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bahçesaray ÇPAL Ailesi - Öğretmenlerimize Saygı</title>
+    <title>Bahçesaray ÇPAL Ailesi</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -32,79 +32,49 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--gri);
-            color: #2d3436;
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body.dark-mode {
             background-color: var(--koyu-bg);
             color: var(--koyu-text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
         }
 
-        body.dark-mode .photo-card {
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 60% 70%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50% 50%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 80% 10%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90% 60%, #fff, rgba(0,0,0,0));
+            background-size: 200% 200%;
+            background-position: 0% 0%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .photo-card {
             background: var(--koyu-card);
         }
 
-        body.dark-mode .info h3 {
+        .info h3 {
             color: #fff;
         }
 
-        body.dark-mode .message-box {
+        .message-box {
             background: linear-gradient(135deg, rgba(230, 126, 34, 0.2), rgba(52, 152, 219, 0.2));
         }
 
-        body.dark-mode footer {
+        footer {
             background: linear-gradient(135deg, #0a0d12, #1a2a6c);
         }
 
-        /* TEMA SEÇİCİ */
-        .theme-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            gap: 10px;
-            background: var(--beyaz);
-            padding: 10px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: slideInRight 0.5s ease-out;
-        }
-
-        body.dark-mode .theme-switcher {
-            background: var(--koyu-card);
-        }
-
-        .theme-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.3rem;
-            padding: 8px 12px;
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-
-        .theme-btn:hover {
-            background: rgba(52, 152, 219, 0.2);
-            transform: scale(1.1);
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* HIZLI ERIŞIM MENÜSÜ */
         .quick-menu {
             position: fixed;
             left: 20px;
@@ -131,7 +101,7 @@
         .quick-menu a {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--ana-renk), var(--mavi));
+            background: linear-gradient(135deg, var(--mavi), var(--altin));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -141,25 +111,42 @@
             box-shadow: 0 4px 15px rgba(26, 42, 108, 0.3);
             transition: all 0.3s;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .quick-menu a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .quick-menu a:hover::before {
+            width: 100px;
+            height: 100px;
         }
 
         .quick-menu a:hover {
-            transform: scale(1.15);
-            box-shadow: 0 6px 20px rgba(26, 42, 108, 0.5);
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 6px 25px rgba(180, 148, 31, 0.6);
         }
 
-        body.dark-mode .quick-menu a {
-            background: linear-gradient(135deg, var(--mavi), var(--altin));
-        }
-
-        /* YUKARIYA ÇIK BUTONU */
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--ana-renk), var(--mavi));
+            background: linear-gradient(135deg, var(--mavi), var(--altin));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -172,19 +159,44 @@
             visibility: hidden;
             transition: all 0.3s;
             z-index: 998;
+            border: none;
         }
 
         .scroll-to-top.show {
             opacity: 1;
             visibility: visible;
+            animation: bounceUp 0.5s ease-out;
+        }
+
+        @keyframes bounceUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .scroll-to-top:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(26, 42, 108, 0.5);
+            animation: pulse 0.6s infinite;
         }
 
-        /* ARA ÇUBUĞU */
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(26, 42, 108, 0.5);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(180, 148, 31, 0.8);
+            }
+        }
+
         .search-container {
             max-width: 600px;
             margin: 40px auto;
@@ -206,24 +218,19 @@
         .search-box {
             width: 100%;
             padding: 15px 20px 15px 45px;
-            border: 2px solid var(--ana-renk);
+            border: 2px solid var(--mavi);
             border-radius: 50px;
             font-size: 1rem;
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s;
-            background: var(--beyaz);
-        }
-
-        body.dark-mode .search-box {
             background: var(--koyu-card);
-            border-color: var(--mavi);
             color: var(--koyu-text);
         }
 
         .search-box:focus {
             outline: none;
-            border-color: var(--mavi);
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+            border-color: var(--altin);
+            box-shadow: 0 0 15px rgba(180, 148, 31, 0.3);
             transform: scale(1.02);
         }
 
@@ -232,14 +239,15 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--ana-renk);
-        }
-
-        body.dark-mode .search-icon {
             color: var(--mavi);
+            animation: spin 3s linear infinite;
         }
 
-        /* HEADER */
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+
         header {
             background: linear-gradient(135deg, rgba(26, 42, 108, 0.95), rgba(52, 152, 219, 0.9)), url('okul.jpg');
             background-size: cover;
@@ -287,9 +295,14 @@
             font-size: 3rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1s ease-out, glow 2s ease-in-out infinite;
             position: relative;
             z-index: 1;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(180, 148, 31, 0); }
+            50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(180, 148, 31, 0.6); }
         }
 
         header .subtitle {
@@ -297,7 +310,7 @@
             font-weight: 300;
             margin-bottom: 30px;
             opacity: 0.95;
-            animation: fadeInUp 1.2s ease-out;
+            animation: fadeInUp 1.2s ease-out, slideInFromBottom 1.5s ease-out;
             position: relative;
             z-index: 1;
         }
@@ -311,7 +324,7 @@
             background: rgba(0, 0, 0, 0.2);
             border-left: 4px solid var(--altin);
             border-radius: 5px;
-            animation: fadeInUp 1.4s ease-out;
+            animation: fadeInUp 1.4s ease-out, slideInFromRight 1.6s ease-out;
             position: relative;
             z-index: 1;
             font-style: italic;
@@ -328,6 +341,28 @@
             }
         }
 
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -338,14 +373,16 @@
             text-align: center;
             margin: 70px 0 40px;
             font-family: 'Playfair Display', serif;
-            color: var(--ana-renk);
+            color: var(--altin);
             font-size: 2.2rem;
             position: relative;
             padding-bottom: 20px;
+            animation: titleGlow 2s ease-in-out infinite;
         }
 
-        body.dark-mode .section-title {
-            color: var(--altin);
+        @keyframes titleGlow {
+            0%, 100% { color: var(--altin); }
+            50% { color: #d4a520; text-shadow: 0 0 20px rgba(180, 148, 31, 0.5); }
         }
 
         .section-title::after {
@@ -357,7 +394,12 @@
             width: 100px;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--altin), transparent);
-            animation: expandWidth 0.8s ease-out;
+            animation: expandWidth 0.8s ease-out, shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         @keyframes expandWidth {
@@ -373,10 +415,10 @@
         }
 
         .photo-card {
-            background: var(--beyaz);
+            background: var(--koyu-card);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
             text-align: center;
             position: relative;
@@ -386,17 +428,24 @@
         @keyframes cardFadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(30px) rotateX(-20deg);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) rotateX(0);
             }
         }
 
         .photo-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(180, 148, 31, 0.4);
+            animation: cardHover 0.6s ease-out forwards;
+        }
+
+        @keyframes cardHover {
+            0% { transform: translateY(-12px) scale(1.02) rotateZ(0deg); }
+            50% { transform: translateY(-12px) scale(1.02) rotateZ(1deg); }
+            100% { transform: translateY(-12px) scale(1.02) rotateZ(0deg); }
         }
 
         .photo-card::before {
@@ -408,18 +457,26 @@
             height: 3px;
             background: linear-gradient(90deg, var(--altin), var(--mavi), var(--altin));
             z-index: 1;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
 
         .photo-card img {
             width: 100%;
             height: 280px;
             object-fit: cover;
-            background-color: #e8e8e8;
+            background-color: #333;
             transition: transform 0.5s ease;
+            filter: brightness(1);
         }
 
         .photo-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1) rotateY(5deg);
+            filter: brightness(1.2);
         }
 
         .info {
@@ -430,13 +487,25 @@
         .info h3 {
             margin: 10px 0;
             font-size: 1.3rem;
-            color: var(--ana-renk);
+            color: #fff;
             font-weight: 600;
+            animation: textAppear 0.6s ease-out backwards 0.2s;
+        }
+
+        @keyframes textAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .branch {
             display: inline-block;
-            background: linear-gradient(135deg, var(--ana-renk), var(--mavi));
+            background: linear-gradient(135deg, var(--mavi), var(--altin));
             color: white;
             padding: 6px 14px;
             border-radius: 20px;
@@ -446,6 +515,13 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(26, 42, 108, 0.2);
+            animation: fadeInUp 0.6s ease-out backwards 0.3s;
+            transition: all 0.3s ease;
+        }
+
+        .branch:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(180, 148, 31, 0.4);
         }
 
         .branch.memur {
@@ -458,29 +534,24 @@
 
         .joke-text {
             font-size: 0.9rem;
-            color: #555;
+            color: #bbb;
             line-height: 1.6;
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid #eee;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .joke-text {
-            color: #bbb;
-            border-top-color: #333;
+            border-top: 1px solid #333;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards 0.4s;
         }
 
         .photo-card:hover .joke-text {
-            color: var(--mavi);
+            color: var(--altin);
         }
 
-        /* BEĞENI BUTONU */
         .like-btn {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--koyu-card);
             border: none;
             width: 40px;
             height: 40px;
@@ -488,40 +559,64 @@
             cursor: pointer;
             font-size: 1.2rem;
             transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--altin);
+            animation: fadeIn 0.6s ease-out backwards 0.5s;
         }
 
         .like-btn:hover {
-            transform: scale(1.15);
+            transform: scale(1.2) rotate(-20deg);
             background: var(--kirmizi);
             color: white;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.5);
         }
 
         .like-btn.liked {
             background: var(--kirmizi);
             color: white;
+            animation: heartBeat 0.6s ease-out;
         }
 
-        body.dark-mode .like-btn {
-            background: var(--koyu-card);
-            color: var(--altin);
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1.1); }
+            75% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
-        /* MESAJ KUTUSU */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .message-box {
-            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(52, 152, 219, 0.1));
+            background: linear-gradient(135deg, rgba(230, 126, 34, 0.2), rgba(52, 152, 219, 0.2));
             border-left: 5px solid var(--kirmizi);
             padding: 30px;
             margin: 50px 0;
             border-radius: 8px;
             text-align: center;
-            animation: slideInLeft 0.8s ease-out;
+            animation: slideInLeft 0.8s ease-out, borderGlow 2s ease-in-out infinite;
         }
 
-        @keyframes slideInLeft {
+        @keyframes borderGlow {
+            0%, 100% { border-left-color: var(--kirmizi); }
+            50% { border-left-color: #ff6b6b; box-shadow: inset -5px 0 15px rgba(231, 76, 60, 0.3); }
+        }
+
+        .message-box h3 {
+            color: var(--kirmizi);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            animation: slideInFromLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
             from {
                 opacity: 0;
                 transform: translateX(-30px);
@@ -532,21 +627,11 @@
             }
         }
 
-        .message-box h3 {
-            color: var(--kirmizi);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-family: 'Playfair Display', serif;
-        }
-
         .message-box p {
-            color: #2d3436;
+            color: var(--koyu-text);
             line-height: 1.8;
             font-size: 0.95rem;
-        }
-
-        body.dark-mode .message-box p {
-            color: var(--koyu-text);
+            animation: fadeInUp 1s ease-out 0.2s backwards;
         }
 
         .stats-section {
@@ -558,34 +643,65 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, var(--ana-renk), var(--mavi));
+            background: linear-gradient(135deg, var(--mavi), var(--altin));
             color: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(26, 42, 108, 0.2);
+            box-shadow: 0 8px 20px rgba(26, 42, 108, 0.4);
             transition: all 0.3s;
             animation: statPop 0.6s ease-out backwards;
+            position: relative;
+            overflow: hidden;
         }
 
         @keyframes statPop {
             from {
                 opacity: 0;
-                transform: scale(0.8);
+                transform: scale(0.8) rotateZ(-10deg);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1) rotateZ(0deg);
             }
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(180, 148, 31, 0.5);
+            animation: statFloat 1s ease-in-out infinite;
+        }
+
+        @keyframes statFloat {
+            0%, 100% { transform: translateY(-5px) scale(1.05); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
             font-family: 'Playfair Display', serif;
+            animation: countUp 1s ease-out;
+        }
+
+        @keyframes countUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .stat-label {
@@ -595,12 +711,13 @@
         }
 
         footer {
-            background: linear-gradient(135deg, #2d3436, #1a2a6c);
+            background: linear-gradient(135deg, #0a0d12, #1a2a6c);
             color: white;
             padding: 50px 20px;
             text-align: center;
             margin-top: 70px;
             border-top: 3px solid var(--altin);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         footer p {
@@ -621,101 +738,139 @@
             50% { transform: scale(1.2); }
         }
 
-        /* VİDEO BÖLÜMÜ */
-        .video-section {
-            margin: 60px 0;
+        .instagram-section {
             text-align: center;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 30px auto;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.2), rgba(52, 152, 219, 0.2));
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 50px 0;
             animation: fadeInUp 0.8s ease-out;
+            transition: all 0.3s ease;
         }
 
-        .video-container iframe {
+        .instagram-section:hover {
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.4), rgba(52, 152, 219, 0.4));
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+        }
+
+        .instagram-section h3 {
+            color: var(--altin);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            animation: textAppear 0.6s ease-out;
+        }
+
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #E4405F, #833AB4);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(228, 64, 95, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instagram-btn::before {
+            content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            border: none;
-            border-radius: 12px;
+            background: rgba(255,255,255,0.3);
+            transition: left 0.5s ease;
         }
 
-        /* İLETİŞİM FORMU */
-        .contact-form {
-            max-width: 600px;
-            margin: 60px auto;
-            background: var(--beyaz);
-            padding: 40px;
+        .instagram-btn:hover::before {
+            left: 100%;
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(228, 64, 95, 0.6);
+        }
+
+        .instagram-btn i {
+            font-size: 1.5rem;
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.2), rgba(52, 152, 219, 0.2));
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin: 50px 0;
             animation: fadeInUp 0.8s ease-out;
         }
 
-        body.dark-mode .contact-form {
-            background: var(--koyu-card);
-        }
-
-        .contact-form h3 {
-            color: var(--ana-renk);
-            margin-bottom: 25px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-        }
-
-        body.dark-mode .contact-form h3 {
+        .contact-section h3 {
             color: var(--altin);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            animation: textAppear 0.6s ease-out;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .form-group {
             margin-bottom: 20px;
+            text-align: left;
+            animation: slideInFromLeft 0.6s ease-out backwards;
         }
+
+        .form-group:nth-child(2) { animation-delay: 0.1s; }
+        .form-group:nth-child(3) { animation-delay: 0.2s; }
+        .form-group:nth-child(4) { animation-delay: 0.3s; }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
+            color: var(--altin);
             font-weight: 600;
-            color: var(--ana-renk);
-        }
-
-        body.dark-mode .form-group label {
-            color: var(--koyu-text);
+            font-size: 0.95rem;
+            animation: fadeIn 0.6s ease-out;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #ddd;
+            border: 2px solid var(--mavi);
             border-radius: 6px;
+            background: var(--koyu-card);
+            color: var(--koyu-text);
             font-family: 'Poppins', sans-serif;
             font-size: 0.95rem;
             transition: all 0.3s;
-            background: white;
-            color: #2d3436;
-        }
-
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group textarea {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--mavi);
-            color: var(--koyu-text);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--mavi);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+            border-color: var(--altin);
+            box-shadow: 0 0 15px rgba(180, 148, 31, 0.4), inset 0 0 5px rgba(180, 148, 31, 0.2);
+            transform: scale(1.02);
         }
 
         .form-group textarea {
@@ -726,7 +881,7 @@
         .submit-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, var(--ana-renk), var(--mavi));
+            background: linear-gradient(135deg, var(--mavi), var(--altin));
             color: white;
             border: none;
             border-radius: 6px;
@@ -735,18 +890,81 @@
             cursor: pointer;
             transition: all 0.3s;
             font-family: 'Poppins', sans-serif;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:hover::after {
+            width: 300px;
+            height: 300px;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(26, 42, 108, 0.3);
+            box-shadow: 0 8px 25px rgba(180, 148, 31, 0.4);
         }
 
         .submit-btn:active {
             transform: translateY(0);
         }
 
-        /* RESPONSIVE */
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            animation: slideDown 0.3s ease-out, shake 0.5s ease-in-out;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-success {
+            background: rgba(39, 174, 96, 0.3);
+            color: #2ecc71;
+            border: 1px solid #27ae60;
+        }
+
+        .alert-error {
+            background: rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+            border: 1px solid #c0392b;
+        }
+
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             header .subtitle { font-size: 1rem; }
@@ -754,7 +972,6 @@
             .gallery-grid { grid-template-columns: 1fr; }
             .stats-section { grid-template-columns: 1fr; }
             .quick-menu { display: none; }
-            .theme-switcher { top: 10px; right: 10px; }
             .scroll-to-top { bottom: 20px; right: 20px; }
         }
 
@@ -763,32 +980,27 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--gri);
-        }
-
-        body.dark-mode ::-webkit-scrollbar-track {
             background: var(--koyu-bg);
         }
 
         ::-webkit-scrollbar-thumb {
             background: var(--altin);
             border-radius: 5px;
+            animation: scrollThumbGlow 2s ease-in-out infinite;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background: var(--mavi);
         }
+
+        @keyframes scrollThumbGlow {
+            0%, 100% { box-shadow: 0 0 5px rgba(180, 148, 31, 0); }
+            50% { box-shadow: 0 0 10px rgba(180, 148, 31, 0.6); }
+        }
     </style>
 </head>
 <body>
 
-<!-- TEMA SEÇİCİ -->
-<div class="theme-switcher">
-    <button class="theme-btn" id="lightBtn" title="Açık Tema">☀️</button>
-    <button class="theme-btn" id="darkBtn" title="Koyu Tema">🌙</button>
-</div>
-
-<!-- HIZLI ERIŞIM MENÜSÜ -->
 <div class="quick-menu">
     <a href="#header" title="Başa Git"><i class="fas fa-home"></i></a>
     <a href="#management" title="Yönetim"><i class="fas fa-users"></i></a>
@@ -797,26 +1009,24 @@
     <a href="#contact" title="İletişim"><i class="fas fa-envelope"></i></a>
 </div>
 
-<!-- YUKARIYA ÇIK BUTONU -->
-<div class="scroll-to-top" id="scrollToTop">
+<button class="scroll-to-top" id="scrollToTop" title="Başa Git">
     <i class="fas fa-arrow-up"></i>
-</div>
+</button>
 
 <header id="header">
     <h1>🎓 Bahçesaray ÇPAL Ailesi</h1>
-    <p class="subtitle">Bir Aile, Bin Umut</p>
+    <p class="subtitle">Tek Çatı, Bin Gelecek.</p>
     <div class="dedication">
         <p>
-            "Eğitim sadece bilgi aktarımı değildir. Eğitim, sevgidir. Bizleri koruyanlara, yönetenenlere, 
+            "Eğitim sadece bilgi aktarımı değildir. Eğitim, sevgidir. Bizleri koruyanlara, yönetenlere, 
             destekleyenlere ve her gün bizim için emek harcayanlara bu sayfayı sevgiyle takdim ediyoruz. 
-            Öğretmenlerimiz ve okul personelimiz, bizim güvenliğimiz, huzurumuzu sağlayan ve gelecek kuranlarız."
+            Öğretmenlerimiz ve okul personelimiz, bizim güvenliğimiz, huzurumuzu sağlayan ve gelecek kuranlarımızdır."
         </p>
     </div>
 </header>
 
 <div class="container">
 
-    <!-- ARA ÇUBUĞU -->
     <div class="search-container">
         <i class="fas fa-search search-icon"></i>
         <input type="text" id="searchBox" class="search-box" placeholder="Öğretmen, personel adı ara...">
@@ -842,7 +1052,7 @@
             <div class="stat-label">Müdür Yardımcısı</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">11</div>
+            <div class="stat-number">12</div>
             <div class="stat-label">Değerli Öğretmen</div>
         </div>
         <div class="stat-card">
@@ -859,7 +1069,7 @@
             <div class="info">
                 <span class="branch">Okul Müdürü / Matematik</span>
                 <h3>Fatih Alemdar</h3>
-                <p class="joke-text">Başarının gizli formülü: Hocanın severliği ve sabırı. Matematiği sevdiren, çocuklara inanan müdürümüz.</p>
+                <p class="joke-text">Sadece sayılar arasındaki dengeyi değil, okulumuzdaki düzen ve disiplini de bizlere en güzel şekilde öğreten; hem idareciliğiyle hem de bilgeliğiyle bizlere rehber olan kıymetli müdürümüz.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -868,7 +1078,7 @@
             <div class="info">
                 <span class="branch">Müdür Yardımcısı / Beden Eğitimi</span>
                 <h3>Şeyma Keleş</h3>
-                <p class="joke-text">Enerjisi bulaşıcı, gülüşü samimi. Derslerde sadece spor değil, disiplin ve özgüven öğretiyor.</p>
+                <p class="joke-text">Okulumuzun düzenini sağlarken disiplini, sahaya çıktığımızda ise pes etmemeyi bizlere aşılayan; hem idareci kimliğiyle hem de sportmen kişiliğiyle bizlere örnek olan kıymetli müdür yardımcımız.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -877,7 +1087,7 @@
             <div class="info">
                 <span class="branch">Müdür Yardımcısı / Fizik</span>
                 <h3>Furkan Emrullah Aşık</h3>
-                <p class="joke-text">Zor konuları basit anlatıyor, asla yıldırmıyor. Fizik dersine girdiğimiz zaman mutlu oluyoruz.</p>
+                <p class="joke-text">Evrenin fizik kanunlarındaki o muazzam dengeyi sınıfta; okulumuzun düzenini ve disiplinini ise makamınızda bizlere en güzel şekilde hissettiriyorsunuz. Hem bilgeliğiyle hem de yöneticiliğiyle bizlere rehber olan değerli müdür yardımcımız.</p>
             </div>
         </div>
     </div>
@@ -890,7 +1100,7 @@
             <div class="info">
                 <span class="branch">Rehberlik</span>
                 <h3>Esra Çörekoğlu</h3>
-                <p class="joke-text">Odasında en iyi danışmanlık, en samimi gülüş. Sorunlarımıza her zaman dinleyen bir kulak.</p>
+                <p class="joke-text">Kendimizi tanıma yolculuğunda elimizden tutan, yeteneklerimizi fark etmemizi sağlayan ve geleceğe daha umutla bakmamıza vesile olan değerli hocamıza... Emekleriniz hayatımızda unutulmaz izler bırakıyor.</p>
             </div>
         </div>
         <div class="photo-card">
@@ -899,7 +1109,7 @@
             <div class="info">
                 <span class="branch">Matematik</span>
                 <h3>İrfan Özdemir</h3>
-                <p class="joke-text">Matematikten korktuğumuz zaman onu hatırlıyoruz. Çünkü o sayıları insana çeviriyor.</p>
+                <p class="joke-text">Rakamların soğuk dünyasını bizlere sevdiren, matematiğin sadece formüllerden değil hayatın kendisinden ibaret olduğunu öğreten değerli hocamıza...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -908,7 +1118,7 @@
             <div class="info">
                 <span class="branch">Edebiyat</span>
                 <h3>Mehmet Adnan İnsel</h3>
-                <p class="joke-text">Her derste bir köpürme konuşması. Kelime seçimleri, cümle akışları... Edebiyat hocamız gerçek bir sanatçı.</p>
+                <p class="joke-text">Bize sadece kitapları değil, o kitapların arasındaki ruhu okumayı; kelimelerin sadece harflerden değil, koca bir dünyadan ibaret olduğunu öğreten kıymetli hocamıza...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -917,7 +1127,7 @@
             <div class="info">
                 <span class="branch">Edebiyat</span>
                 <h3>Mazlum Turan</h3>
-                <p class="joke-text">Şiiri bizim diline çeviriyor. Dersten sonra sıkılmak imkânsız oluyor.</p>
+                <p class="joke-text">Bize her insanın bir hikaye, her hayatın ise okunmaya değer bir roman olduğunu fark ettiren; cümlelerimize anlam, hayallerimize derinlik katan kıymetli hocamıza...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -926,7 +1136,7 @@
             <div class="info">
                 <span class="branch">Coğrafya</span>
                 <h3>Bayram Aşit</h3>
-                <p class="joke-text">Haritayı açtığında dünya canlı oluyor. Bahçesaray'ın her köşesini bize sevdirtiyor.</p>
+                <p class="joke-text">Bize sadece haritaları değil, dünyayı bir bütün olarak görmeyi ve sınırların ötesine bakabilmeyi öğreten; coğrafyayı bir ders olmaktan çıkarıp bir keşif yolculuğuna dönüştüren kıymetli hocamız...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -935,7 +1145,7 @@
             <div class="info">
                 <span class="branch">Din Kültürü</span>
                 <h3>Saliha Çelem</h3>
-                <p class="joke-text">Güler yüzü kadar sıcak bir kalbi var. Din kültürünü sevgiyle öğretiyor.</p>
+                <p class="joke-text">Bize sadece bilginin değil, o bilgiyi güzel ahlakla süslemenin ve dürüst bir insan olmanın kıymetini öğreten; vakur duruşu ve rehberliğiyle yolumuzu aydınlatan kıymetli hocamız...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -944,16 +1154,16 @@
             <div class="info">
                 <span class="branch">Din Kültürü</span>
                 <h3>Osman Kaya</h3>
-                <p class="joke-text">Sabrısı efsane, bilgisi sonsuz. Soru sorduk mu hep cevap buluyor.</p>
+                <p class="joke-text">Bizlere dinin sadece şekil değil, bir gönül işi ve samimiyet olduğunu; her insanın kalbine nezaketle dokunmanın en büyük ibadet olduğunu öğreten kıymetli hocamıza...</p>
             </div>
         </div>
         <div class="photo-card">
             <button class="like-btn" onclick="toggleLike(this)">🤍</button>
             <img src="meryem_hoca.jpg" loading="lazy">
             <div class="info">
-                <span class="branch">İngilizce</span>
+                <span class="branch">��ngilizce</span>
                 <h3>Meryem Güntin</h3>
-                <p class="joke-text">İngilizce sadece ders değil, ona katılmak keyif. Işığını sınıfta saçıyor.</p>
+                <p class="joke-text">Bize sadece yeni bir dili değil, o dilin açtığı bambaşka dünyaları ve kültürleri tanıtan; sınırlarımızı aşmamız için bize ilham veren kıymetli hocamız...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -962,7 +1172,7 @@
             <div class="info">
                 <span class="branch">İngilizce</span>
                 <h3>Ali Çiftçi</h3>
-                <p class="joke-text">Derste eğleniyoruz, sonra kelime öğrendiğimizi fark ediyoruz. İngilizce bu kadar akıcı bir dil olabilir mi?</p>
+                <p class="joke-text">Dilin ders değil, dünyaya açılan bir kapı olduğunu bizlere en güzel şekilde öğrettiniz. Hayallerimize yeni diller ve yeni ufuklar ekleyen, bizleri bir 'dünya insanı' olarak yetiştiren değerli hocamız...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -971,7 +1181,7 @@
             <div class="info">
                 <span class="branch">Müzik</span>
                 <h3>Begüm Yağmuroğlu</h3>
-                <p class="joke-text">Müzik dersinden sonra akılımız sıkılmıyor. Notaları hayata döndürüyor.</p>
+                <p class="joke-text">Hayatın bazen karmaşıklaşan sesleri arasında bize en güzel ezgileri duymayı, ruhumuzu notalarla dinlendirmeyi öğreten kıymetli hocamız...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -980,7 +1190,16 @@
             <div class="info">
                 <span class="branch">Tarih</span>
                 <h3>Koray Eker</h3>
-                <p class="joke-text">Tarihi anlatırken hayalımızda canlanıyor. Geçmiş artık sıkıcı değil, bir macera.</p>
+                <p class="joke-text">Bize sadece tarihin tozlu sayfalarını değil, o sayfalardan bugüne uzanan büyük mirası ve dersleri öğreten; geçmişin ışığıyla geleceğimizi aydınlatan kıymetli hocamız...</p>
+            </div>
+        </div>
+        <div class="photo-card">
+            <button class="like-btn" onclick="toggleLike(this)">🤍</button>
+            <img src="ferdi_hoca.jpg" loading="lazy">
+            <div class="info">
+                <span class="branch">Tarih</span>
+                <h3>Ferdi KARCİ</h3>
+                <p class="joke-text">Bize sadece tarihin tozlu sayfalarını değil, o sayfalardan bugüne uzanan büyük mirası ve dersleri öğreten; geçmişin ışığıyla geleceğimizi aydınlatan kıymetli hocamız...</p>
             </div>
         </div>
     </div>
@@ -1002,7 +1221,7 @@
             <div class="info">
                 <span class="branch hizmetli">Hizmetli</span>
                 <h3>Reşit Sami</h3>
-                <p class="joke-text">Okulun her köşesi onun elinden geçiyor. Temizlik meslek değil, sevgi işi onun için.</p>
+                <p class="joke-text">Okulumuzun sadece duvarlarını değil, huzurunu da koruyan; her sabah bizi güler yüzüyle karşılayıp güven içinde eğitim görmemizi sağlayan kıymetli abimiz...</p>
             </div>
         </div>
         <div class="photo-card">
@@ -1070,42 +1289,46 @@
         </div>
     </div>
 
-    <!-- VİDEO BÖLÜMÜ -->
-    <div class="video-section">
-        <h2 class="section-title">🎬 Okul Anılarımız</h2>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+    <div class="instagram-section">
+        <h3>📸 Bizi Sosyal Medyada Takip Edin</h3>
+        <a href="https://www.instagram.com/bahcesaraycpal/" target="_blank" class="instagram-btn">
+            <i class="fab fa-instagram"></i>
+            Instagram Sayfamızı Ziyaret Et
+        </a>
     </div>
 
-    <!-- İLETİŞİM FORMU -->
-    <div class="contact-form" id="contact">
+    <div class="contact-section" id="contact">
         <h3>📧 Bize Ulaşın</h3>
-        <form onsubmit="handleSubmit(event)">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mnjlzyjy" method="POST">
+            <div id="alertBox"></div>
+            
             <div class="form-group">
-                <label for="name">Adınız</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name">Adınız *</label>
+                <input type="text" id="name" name="name" placeholder="Adınızı giriniz" required>
             </div>
+
             <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email">E-mail Adresiniz *</label>
+                <input type="email" id="email" name="email" placeholder="E-mail adresinizi giriniz" required>
             </div>
+
             <div class="form-group">
-                <label for="message">Mesajınız</label>
-                <textarea id="message" name="message" required></textarea>
+                <label for="message">Mesajınız *</label>
+                <textarea id="message" name="message" placeholder="Mesajınızı yazınız..." required></textarea>
             </div>
-            <button type="submit" class="submit-btn">Gönder</button>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Mesajı Gönder</button>
         </form>
     </div>
 
     <div class="message-box">
         <h3>💝 Son Bir Söz...</h3>
         <p>
-            Sevgili öğretmenlerimiz, yöneticilerimiz ve personelimiz; sizler sadece birer öğretmen değilsiniz. 
-            Siz bizim ailemiz, rehberimiz, koruyucumuz ve geleceğin mimarısınız. Her gün sizin için teşekkürüz. 
-            Sizin varlığınız bizlere güven verir, sevindirir ve ileriye gitmek için ilham verir. 
+            Yaşanan bu acı olayların gölgesinde, her sabah sınıfa girdiğinizde bizlere sadece bilgi değil, aynı zamanda güven ve umut aşılayan siz değerli öğretmenlerimize olan vefa borcumuz her zamankından daha derin. Sizler, sadece tahta başında ders anlatan rehberler değil; bizleri kötülüklerden korumak için siper olan, geleceğimizi ilmek ilmek işleyen ve en zor zamanlarda bile dik duruşunu bozmayan gizli kahramanlarsınız.
+
+Karanlığın karşısında birer meşale gibi yanarken, bizlerin sadece zihnini değil kalbini de iyilikle doldurmak için verdiğiniz emekleri asla unutmayacağız. Her bir fidanın büyümesi için gösterdiğiniz fedakarlık, bugünlerde daha da anlam kazanıyor. Bizlerin her başarısında imzanız, her güvenli adımımızda ise sarsılmaz gölgeniz var. Kalplerimizdeki sevgi ve sonsuz saygıyla, her birinize minnettarız; iyi ki varsınız. 
             <br><br>
-            <strong>Bu sayfa, kalbimizin harita; sevgimizin ifadesidir.</strong>
+            <strong>Bu sayfa, kalbimizin haritası; sevgimizin ifadesidir.</strong>
         </p>
     </div>
 
@@ -1118,53 +1341,19 @@
         Öğrencileri Tarafından Saygıyla Hazırlanmıştır
     </p>
     <p>
-        "Bir Aile, Bin Umut" <span class="footer-heart">❤️</span> Sizlerle Daha Güvendeyiz!
+        "Tek Çatı, Bin Gelecek." <span class="footer-heart">❤️</span> Sizlerle Daha Güvendeyiz!
     </p>
     <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.8;">
-        © 2024 Bahçesaray ÇPAL - Tüm Hakları Saklıdır
+        © 2026 Bahçesaray ÇPAL - Tüm Hakları Saklıdır
     </p>
 </footer>
 
 <script>
-    // TEMA SEÇİCİ
-    const lightBtn = document.getElementById('lightBtn');
-    const darkBtn = document.getElementById('darkBtn');
-    const body = document.body;
-
-    // Tema tercihini kaydet
-    function saveDarkMode(isDark) {
-        localStorage.setItem('darkMode', isDark);
-    }
-
-    function loadDarkMode() {
-        const isDark = localStorage.getItem('darkMode') === 'true';
-        if (isDark) {
-            body.classList.add('dark-mode');
-            darkBtn.style.opacity = '1';
-            lightBtn.style.opacity = '0.5';
-        } else {
-            body.classList.remove('dark-mode');
-            lightBtn.style.opacity = '1';
-            darkBtn.style.opacity = '0.5';
-        }
-    }
-
-    lightBtn.addEventListener('click', () => {
-        body.classList.remove('dark-mode');
-        saveDarkMode(false);
-        lightBtn.style.opacity = '1';
-        darkBtn.style.opacity = '0.5';
-    });
-
-    darkBtn.addEventListener('click', () => {
-        body.classList.add('dark-mode');
-        saveDarkMode(true);
-        darkBtn.style.opacity = '1';
-        lightBtn.style.opacity = '0.5';
-    });
-
-    // YUKARIYA ÇIK BUTONU
+document.addEventListener('DOMContentLoaded', function() {
     const scrollToTopBtn = document.getElementById('scrollToTop');
+    const contactForm = document.getElementById('contactForm');
+    const alertBox = document.getElementById('alertBox');
+    const submitBtn = document.getElementById('submitBtn');
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
@@ -1175,10 +1364,60 @@
     });
 
     scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 
-    // ARA ÇUBUĞU
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                showAlert('❌ Lütfen tüm alanları doldurunuz!', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Gönderiliyor...';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showAlert('✅ Mesajınız başarıyla gönderildi! Teşekkürler.', 'success');
+                    contactForm.reset();
+                } else {
+                    showAlert('❌ Bir hata oluştu. Lütfen tekrar deneyin.', 'error');
+                }
+            } catch (error) {
+                console.error('Hata:', error);
+                showAlert('❌ Bağlantı hatası. İnternet bağlantınızı kontrol edin.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Mesajı Gönder';
+            }
+        });
+    }
+
+    function showAlert(message, type) {
+        alertBox.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+        setTimeout(() => {
+            alertBox.innerHTML = '';
+        }, 5000);
+    }
+
     const searchBox = document.getElementById('searchBox');
     const cards = document.querySelectorAll('.photo-card');
 
@@ -1189,43 +1428,23 @@
             const branch = card.querySelector('.branch').textContent.toLowerCase();
             if (name.includes(searchTerm) || branch.includes(searchTerm)) {
                 card.style.display = '';
-                card.style.animation = 'cardFadeIn 0.3s ease-out';
             } else {
                 card.style.display = 'none';
             }
         });
     });
 
-    // BEĞENI BUTONU
     function toggleLike(btn) {
         btn.classList.toggle('liked');
         if (btn.classList.contains('liked')) {
             btn.textContent = '❤️';
-            btn.style.animation = 'heartbeat 0.5s ease';
         } else {
             btn.textContent = '🤍';
-            btn.style.animation = 'none';
         }
-        setTimeout(() => {
-            btn.style.animation = '';
-        }, 500);
     }
 
-    // İLETİŞİM FORMU
-    function handleSubmit(event) {
-        event.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        // E-mail gönder (backend gerekli)
-        console.log('Form gönderildi:', { name, email, message });
-        alert('Mesajınız başarıyla gönderildi! Teşekkürler.');
-        event.target.reset();
-    }
-
-    // SAYFA YÜKLEMEDE TEMA AYARLA
-    loadDarkMode();
+    window.toggleLike = toggleLike;
+});
 </script>
 
 </body>
